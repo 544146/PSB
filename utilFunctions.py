@@ -54,7 +54,7 @@ def get_str_results(results):
                 return "Request database is somehow full?..."
 
         if r['Seeders'] > 0:
-            if r['MagnetUri'] != None:
+            if r['MagnetUri'] is not None:
                 req_list_db.put_item(
                     Item={
                         'req_id': req_id,
@@ -64,7 +64,7 @@ def get_str_results(results):
                         'size' : str(round((r['Size'] / 1024 / 1024 / 1024), 2)),
                         'expire': int(time.time() + 3600)
                     })
-            elif r['Link'] != None:
+            elif r['Link'] is not None:
                 req_list_db.put_item(
                     Item={
                         'req_id': req_id,

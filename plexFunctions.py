@@ -4,7 +4,7 @@ import requests
 
 def add_plex(email):
 
-    regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+    regex = r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
     if not (re.search(regex, email)):
         return 'Invalid email'
 
