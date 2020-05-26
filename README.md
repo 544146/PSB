@@ -2,8 +2,9 @@
 
 environment variables
 
-| jackett_api_key 	|  	|
+| Key 	| Value 	|
 |--------------------------	|--------------------------------------------------	|
+| jackett_api_key 	|  	|
 | jackett_url 	| jacket url /jacket/api/v2.0/indexers/all/results 	|
 | rutorrent_basic 	|  	|
 | rutorrent_rpc 	| rutorrent rpc url /rutorrent/plugins/rpc/rpc.php 	|
