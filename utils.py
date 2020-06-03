@@ -7,7 +7,7 @@ import re
 
 def get_info_hash_from_magnet(magnet_link):
     try:
-        return re.search(r'([a-fA-F\d]{40})', magnet_link).group(1)
+        return re.search(r'([a-fA-F\d]{10,40})', magnet_link).group(1)
     except AttributeError:
         return 'error'
 
