@@ -1,6 +1,6 @@
-# bad unpolished telegram plex rutorrent jackett bot thingy
+# Serverless Telegram Bot
 
-environment variables
+### Environment Variables Table
 
 | Key                      | Value                                            |
 |--------------------------|--------------------------------------------------|
