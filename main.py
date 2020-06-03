@@ -22,9 +22,6 @@ def main(message):
     first_name = message['chat']['first_name']
     chat_id = message['chat']['id']
     
-    ts = Telegram.Sender(225404314)
-    ts.send('{}-{}: {}'.format(first_name, chat_id, message_text))
-    
     telegram_sender = Telegram.Sender(chat_id)
 
     if not Authorization.is_authorized(chat_id):
