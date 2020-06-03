@@ -1,7 +1,7 @@
 import os
 import requests
 
-class TelegramSender:
+class Sender:
 
     tg_bot_key = os.environ['telegram_bot_key']
 

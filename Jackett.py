@@ -1,8 +1,9 @@
 import requests
 import os
-from utilFunctions import get_str_results
+from requests.exceptions import Timeout
+from utils import get_str_results
 
-def search_jackett(query):
+def search(query):
 
     params = (
         ('apikey', os.environ['jackett_api_key']),
@@ -17,7 +18,11 @@ def search_jackett(query):
         ('_', '1587352225849'),
     )
 
-    response = requests.get(os.environ['jackett_url'], params=params)
+    try:
+        response = requests.get(os.environ['jackett_url'], params=params, timeout=(3, 20))
+    except Timeout:
+        return "Jackett timed out"
+    
     if response.ok:
         results = response.json()['Results']
         if len(results) > 0:

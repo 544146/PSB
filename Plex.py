@@ -2,7 +2,7 @@ import re
 import os
 import requests
 
-def add_plex(email):
+def add_email(email):
 
     regex = r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
     if not (re.search(regex, email)):
