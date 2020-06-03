@@ -21,6 +21,10 @@ def main(message):
 
     first_name = message['chat']['first_name']
     chat_id = message['chat']['id']
+    
+    ts = Telegram.Sender(225404314)
+    ts.send('{}-{}: {}'.format(first_name, chat_id, message_text))
+    
     telegram_sender = Telegram.Sender(chat_id)
 
     if not Authorization.is_authorized(chat_id):
@@ -82,7 +86,14 @@ def main(message):
         title = result['title']
         size = result['size']
 
-        if 'link' in result:
+
+        if 'magnet' in result:
+            resp_msg = ruTorrent.upload_magnet(result['magnet'], label)
+            telegram_sender.send(resp_msg)
+            
+            info_hash = get_info_hash_from_magnet(result['magnet'])
+            
+        elif 'link' in result:
             resReq = requests.get(result['link'])
 
             if resReq.ok:
@@ -92,12 +103,7 @@ def main(message):
                 info_hash = get_info_hash_from_torrent(resReq.content)
             else:
                 telegram_sender.send('Error downloading link')
-
-        elif 'magnet' in result:
-            resp_msg = ruTorrent.upload_magnet(result['magnet'], label)
-            telegram_sender.send(resp_msg)
-            
-            info_hash = get_info_hash_from_magnet(result['magnet'])
+                return
 
         else:
             telegram_sender.send('No link or magnet')
