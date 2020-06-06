@@ -10,3 +10,6 @@
 [submodule "BencodePy"]
 	path = BencodePy
 	url = https://github.com/eweast/BencodePy
+[submodule "chardet"]
+	path = chardet
+	url = https://github.com/chardet/chardet
