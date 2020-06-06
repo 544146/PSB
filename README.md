@@ -1,6 +1,6 @@
-# Serverless Telegram Bot
+### Serverless Telegram Bot for querying Jackett and uploading to ruTorrent
 
-### Environment Variables Table
+#### Environment Variables Table
 
 | Key                      | Value                                            |
 |--------------------------|--------------------------------------------------|
