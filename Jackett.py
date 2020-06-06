@@ -8,14 +8,14 @@ def search(query):
     params = (
         ('apikey', os.environ['jackett_api_key']),
         ('Query', query),
-        ('Tracker[]',
-         ['eztv', 'idope', 'iptorrents', 'nyaasi', 'rarbg', 'rutracker-ru']),
+        #('Tracker[]',
+        # ['eztv', 'idope', 'iptorrents', 'nyaasi', 'rarbg', 'rutracker-ru']),
         ('Category[]', [
             '2000', '2010', '2020', '2030', '2040', '2045', '2050', '2060',
             '2070', '5000', '5010', '5020', '5030', '5040', '5045', '5060',
             '5070', '5080'
         ]),
-        ('_', '1587352225849'),
+        #('_', '1587352225849'),
     )
 
     try:
