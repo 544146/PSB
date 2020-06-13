@@ -21,7 +21,7 @@ def main(message):
 
     first_name = message['chat']['first_name']
     chat_id = message['chat']['id']
-    
+   
     telegram_sender = Telegram.Sender(chat_id)
 
     if not Authorization.is_authorized(chat_id):
@@ -83,7 +83,6 @@ def main(message):
         title = result['title']
         size = result['size']
 
-
         if 'magnet' in result:
             resp_msg = ruTorrent.upload_magnet(result['magnet'], label)
             telegram_sender.send(resp_msg)
@@ -91,15 +90,28 @@ def main(message):
             info_hash = get_info_hash_from_magnet(result['magnet'])
             
         elif 'link' in result:
-            resReq = requests.get(result['link'])
+            
+            resReq = requests.get(result['link'], allow_redirects=False)
 
-            if resReq.ok:
-                resp_msg = ruTorrent.upload_torrent(resReq.content, label)
-                telegram_sender.send(resp_msg)#
+            try:
+                if resReq.status_code == 302:
+                    resp_msg = ruTorrent.upload_magnet(resReq.headers['Location'], label)
+                    telegram_sender.send(resp_msg)
+            
+                    info_hash = get_info_hash_from_magnet(resReq.headers['Location'])
+                    
+                elif resReq.ok:
+                    resp_msg = ruTorrent.upload_torrent(resReq.content, label)
+                    telegram_sender.send(resp_msg)
                 
-                info_hash = get_info_hash_from_torrent(resReq.content)
-            else:
-                telegram_sender.send('Error downloading link')
+                    info_hash = get_info_hash_from_torrent(resReq.content)
+                    
+                else:
+                    telegram_sender.send('Error downloading link')
+                    return
+                
+            except:
+                telegram_sender.send('Error, something went wrong')
                 return
 
         else:
