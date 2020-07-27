@@ -27,6 +27,12 @@ Getting a torrent
 
 ![download](https://i.imgur.com/stKU5u7.png "download")
 
+Suggested commands
+
+---
+
+![suggest](https://i.imgur.com/3cVfsVl.png "suggest")
+
 ## Architecture
 
 ---
