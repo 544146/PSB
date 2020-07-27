@@ -31,7 +31,7 @@ Getting a torrent
 
 ---
 
-Telegram webhook -> AWS API Gateway -> AWS Lambda -> Telegram API
+Telegram webhook -> AWS API Gateway -> AWS Lambda -> (AWS DynamoDB) -> Telegram API
 
 ## Environment Variables
 
