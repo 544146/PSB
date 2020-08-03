@@ -1,5 +1,5 @@
 # Plex Search Bot
-Serverless Telegram Bot for querying Jackett and uploading to ruTorrent
+Serverless Telegram bot for querying Jackett and uploading to ruTorrent
 
 ## Deployed Application Screenshots
 
