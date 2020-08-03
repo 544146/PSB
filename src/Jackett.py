@@ -22,6 +22,10 @@ def search(query):
         response = requests.get(os.environ['jackett_url'], params=params, timeout=(3, 20))
     except Timeout:
         return "Jackett timed out"
+    except ConnectionError:
+        return "Jackett didn't respond"
+    except:
+        return "Something went wrong"
     
     if response.ok:
         results = response.json()['Results']
