@@ -55,9 +55,11 @@ def main(message):
             telegram_sender.send('You need to provide a query')
             return
 
+        msg = telegram_sender.send("Searching...")
+        msg_id = msg.json()['result']['message_id'] 
         argument = message_text.split(None, 1)[1]
         resp_msg = Jackett.search(argument)
-        telegram_sender.send(resp_msg)
+        telegram_sender.edit(resp_msg, msg_id)
 
     elif message_text.startswith('/get'):
 
